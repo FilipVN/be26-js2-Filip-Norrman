@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scrumboard</title>
+  </head>
+  <body>
+    <header>
+      <h1>Scrumboard</h1>
+
+      <div class="filters">
+        <label>
+          Kategori
+          <select id="category-filter">
+            <option value="">Alla kategorier</option>
+            <option value="frontend">Frontend</option>
+            <option value="backend">Backend</option>
+            <option value="ux">UX</option>
+          </select>
+        </label>
+
+        <label>
+          Medlem
+          <select id="member-filter">
+            <option value="">Alla medlemmar</option>
+          </select>
+        </label>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <form id="task-form" class="panel">
+          <h2>Ny uppgift</h2>
+
+          <label>
+            Titel
+            <input name="title" type="text" required />
+          </label>
+
+          <label>
+            Beskrivning
+            <textarea name="description" rows="3" required></textarea>
+          </label>
+
+          <label>
+            Kategori
+            <select name="category" required>
+              <option value="">Välj kategori…</option>
+              <option value="frontend">Frontend</option>
+              <option value="backend">Backend</option>
+              <option value="ux">UX</option>
+            </select>
+          </label>
+
+          <label>
+            Deadline
+            <input name="deadline" type="date" required />
+          </label>
+
+          <button type="submit">Lägg till uppgift</button>
+        </form>
+
+        <form id="member-form" class="panel">
+          <h2>Ny medlem</h2>
+
+          <label>
+            Namn
+            <input name="name" type="text" required />
+          </label>
+
+          <fieldset>
+            <legend>Kategori (minst en)</legend>
+            <label class="checkbox"><input type="checkbox" name="category" value="frontend" /> Frontend</label>
+            <label class="checkbox"><input type="checkbox" name="category" value="backend" /> Backend</label>
+            <label class="checkbox"><input type="checkbox" name="category" value="ux" /> UX</label>
+          </fieldset>
+
+          <button type="submit">Lägg till medlem</button>
+        </form>
+
+        <section class="panel">
+          <h2>Medlemmar</h2>
+          <ul id="member-list">
+            <li>Laddar…</li>
+          </ul>
+        </section>
+      </aside>
+
+      <main class="board">
+        <section class="column">
+          <h2>Nya</h2>
+          <div id="new-tasks"><p class="empty">Laddar…</p></div>
+        </section>
+
+        <section class="column">
+          <h2>Pågående</h2>
+          <div id="ongoing-tasks"><p class="empty">Laddar…</p></div>
+        </section>
+
+        <section class="column">
+          <h2>Slutförda</h2>
+          <div id="done-tasks"><p class="empty">Laddar…</p></div>
+        </section>
+      </main>
+    </div>
+
+    <p id="message" class="message" hidden></p>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
